@@ -10,6 +10,12 @@ set(FREERDP_TOPDIR ${CMAKE_CURRENT_SOURCE_DIR}/external/FreeRDP )
 set(FREERDP_INCLUDE_DIRS ${FREERDP_TOPDIR}/install/include )
 set(FREERDP_LIBDIR ${FREERDP_TOPDIR}/install/lib )
 set(FREERDP_LIBRARIES
+	${FREERDP_LIBDIR}/librdtk.a
+	${FREERDP_LIBDIR}/libfreerdp.a
+	${FREERDP_LIBDIR}/libwinpr.a
+	${FREERDP_LIBDIR}/libwinpr-makecert-tool.a
+	${FREERDP_LIBDIR}/libxfreerdp-client.a
+	${FREERDP_LIBDIR}/libfreerdp-client.a
 	${FREERDP_LIBDIR}/freerdp/libaudin-client.a
 	${FREERDP_LIBDIR}/freerdp/libaudin-client-alsa.a
 	${FREERDP_LIBDIR}/freerdp/libaudin-client-pulse.a
@@ -35,12 +41,6 @@ set(FREERDP_LIBRARIES
 	${FREERDP_LIBDIR}/freerdp/libtsmf-client-alsa-audio.a
 	${FREERDP_LIBDIR}/freerdp/libtsmf-client-ffmpeg-decoder.a
 	${FREERDP_LIBDIR}/freerdp/libtsmf-client-pulse-audio.a
-	${FREERDP_LIBDIR}/librdtk.a
-	${FREERDP_LIBDIR}/libwinpr.a
-	${FREERDP_LIBDIR}/libwinpr-makecert-tool.a
-	${FREERDP_LIBDIR}/libxfreerdp-client.a
-	${FREERDP_LIBDIR}/libfreerdp.a
-	${FREERDP_LIBDIR}/libfreerdp-client.a
 )
 
 
@@ -87,7 +87,9 @@ set_property(TARGET libfreerdp PROPERTY IMPORTED_LOCATION ${FREERDP_LIBDIR}/libf
 add_dependencies(libfreerdp FreeRDP)
 
 include_directories(${REMMINA_COMMON_INCLUDE_DIRS} ${FREERDP_INCLUDE_DIRS})
-target_link_libraries(remmina-plugin-rdp ${REMMINA_COMMON_LIBRARIES} ${FREERDP_LIBRARIES} ${XKBFILE_LIBRARIES} ${OPENSSL_LIBRARIES})
+target_link_libraries(remmina-plugin-rdp ${REMMINA_COMMON_LIBRARIES}
+	-Wl,--start-group ${FREERDP_LIBRARIES} -Wl,--end-group
+	${XKBFILE_LIBRARIES} ${OPENSSL_LIBRARIES})
 
 install(TARGETS remmina-plugin-rdp DESTINATION ${REMMINA_PLUGINDIR})
 
