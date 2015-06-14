@@ -5,6 +5,7 @@ include(ExternalProject)
 set(CMAKE_THREAD_PREFER_PTHREAD)
 find_package(Threads)
 find_package(OpenSSL REQUIRED)
+find_package(Pulse REQUIRED)
 
 set(FREERDP_TOPDIR ${CMAKE_CURRENT_SOURCE_DIR}/external/FreeRDP )
 set(FREERDP_INCLUDE_DIRS ${FREERDP_TOPDIR}/install/include )
@@ -89,7 +90,7 @@ add_dependencies(libfreerdp FreeRDP)
 include_directories(${REMMINA_COMMON_INCLUDE_DIRS} ${FREERDP_INCLUDE_DIRS})
 target_link_libraries(remmina-plugin-rdp ${REMMINA_COMMON_LIBRARIES}
 	-Wl,--start-group ${FREERDP_LIBRARIES} -Wl,--end-group
-	${XKBFILE_LIBRARIES} ${OPENSSL_LIBRARIES})
+	${XKBFILE_LIBRARIES} ${OPENSSL_LIBRARIES} ${PULSE_LIBRARIES})
 
 install(TARGETS remmina-plugin-rdp DESTINATION ${REMMINA_PLUGINDIR})
 
