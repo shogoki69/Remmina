@@ -1,6 +1,6 @@
 # See LICENSE and COPYING files for copyright and license details.
 
-cmake_minimum_required(VERSION 2.8)
+cmake_minimum_required(VERSION 2.8.12)
 
 set(CMAKE_COLOR_MAKEFILE ON)
 

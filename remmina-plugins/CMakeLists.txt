@@ -25,10 +25,7 @@ endif()
 
 add_subdirectory(xdmcp)
 
-find_suggested_package(FREERDP)
-if(FREERDP_FOUND)
-	add_subdirectory(rdp)
-endif()
+add_subdirectory(rdp)
 
 find_suggested_package(TELEPATHY)
 if(TELEPATHY_FOUND)
