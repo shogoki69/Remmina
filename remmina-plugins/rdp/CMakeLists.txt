@@ -50,7 +50,7 @@ set(FREERDP_LIBRARIES
 	${FREERDP_LIBDIR}/libxfreerdp-client.a
 	${FREERDP_LIBDIR}/libfreerdp-client.a
 	${FREERDP_LIBDIR}/freerdp/libaudin-client.a
-	${FREERDP_LIBDIR}/freerdp/libaudin-client-alsa.a
+#	${FREERDP_LIBDIR}/freerdp/libaudin-client-alsa.a
 	${FREERDP_LIBDIR}/freerdp/libaudin-client-pulse.a
 	${FREERDP_LIBDIR}/freerdp/libcliprdr-client.a
 	${FREERDP_LIBDIR}/freerdp/libdisp-client.a
@@ -65,13 +65,13 @@ set(FREERDP_LIBRARIES
 	${FREERDP_LIBDIR}/freerdp/librdpei-client.a
 	${FREERDP_LIBDIR}/freerdp/librdpgfx-client.a
 	${FREERDP_LIBDIR}/freerdp/librdpsnd-client.a
-	${FREERDP_LIBDIR}/freerdp/librdpsnd-client-alsa.a
+#	${FREERDP_LIBDIR}/freerdp/librdpsnd-client-alsa.a
 	${FREERDP_LIBDIR}/freerdp/librdpsnd-client-pulse.a
 	${FREERDP_LIBDIR}/freerdp/libremdesk-client.a
 	${FREERDP_LIBDIR}/freerdp/libserial-client.a
 	${FREERDP_LIBDIR}/freerdp/libsmartcard-client.a
 	${FREERDP_LIBDIR}/freerdp/libtsmf-client.a
-	${FREERDP_LIBDIR}/freerdp/libtsmf-client-alsa-audio.a
+#	${FREERDP_LIBDIR}/freerdp/libtsmf-client-alsa-audio.a
 #	${FREERDP_LIBDIR}/freerdp/libtsmf-client-ffmpeg-decoder.a
 	${FREERDP_LIBDIR}/freerdp/libtsmf-client-pulse-audio.a
 )
@@ -106,7 +106,7 @@ ExternalProject_Add(
 	TMP_DIR ${FREERDP_TOPDIR}/tmp
 	CMAKE_ARGS "-DCMAKE_INSTALL_PREFIX:PATH=${FREERDP_TOPDIR}/install"
 	UPDATE_COMMAND ""
-	CMAKE_ARGS -DWITH_CUPS=on -DWITH_PULSE=on -DWITH_GSTREAMER_1_0=off -DWITH_MANPAGES=off -DWITH_WAYLAND=off -DBUILD_SHARED_LIBS=off -DWITH_FFMPEG=off
+	CMAKE_ARGS -DWITH_CUPS=on -DWITH_PULSE=on -DWITH_ALSA=off -DWITH_GSTREAMER_1_0=off -DWITH_MANPAGES=off -DWITH_WAYLAND=off -DBUILD_SHARED_LIBS=off -DWITH_FFMPEG=off
 )
 
 add_library(remmina-plugin-rdp ${REMMINA_PLUGIN_RDP_SRCS})
