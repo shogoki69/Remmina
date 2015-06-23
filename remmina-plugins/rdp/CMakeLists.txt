@@ -118,6 +118,7 @@ set_target_properties(remmina-plugin-rdp PROPERTIES NO_SONAME 1)
 add_library(libfreerdp STATIC IMPORTED)
 set_property(TARGET libfreerdp PROPERTY IMPORTED_LOCATION ${FREERDP_LIBDIR}/libfreerdp.a)
 add_dependencies(libfreerdp FreeRDP)
+add_dependencies(remmina-plugin-rdp libfreerdp)
 
 include_directories(${REMMINA_COMMON_INCLUDE_DIRS} ${FREERDP_INCLUDE_DIRS})
 target_link_libraries(remmina-plugin-rdp ${REMMINA_COMMON_LIBRARIES}
